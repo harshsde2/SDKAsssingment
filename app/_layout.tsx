@@ -5,6 +5,8 @@ import { StatusBar } from 'expo-status-bar';
 import { useColorScheme } from 'react-native';
 import { useTheme } from '../context/ThemeContext';
 import ThemeToggle from '@/components/ThemeToggle';
+import { GestureHandlerRootView } from 'react-native-gesture-handler';
+import { StyleSheet } from 'react-native';
 
 /**
  * Root Layout Component
@@ -15,9 +17,11 @@ import ThemeToggle from '@/components/ThemeToggle';
 export default function RootLayout() {
   // We need a wrapper to access the theme context
   return (
-    <ThemeProvider>
-      <RootLayoutNav />
-    </ThemeProvider>
+    <GestureHandlerRootView style={styles.container}>
+      <ThemeProvider>
+        <RootLayoutNav />
+      </ThemeProvider>
+    </GestureHandlerRootView>
   );
 }
 
@@ -82,3 +86,9 @@ function RootLayoutNav() {
     </>
   );
 }
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+  },
+});

@@ -2,6 +2,7 @@ import React from 'react';
 import { TouchableOpacity, StyleSheet, Text, View } from 'react-native';
 import { useTheme } from '../context/ThemeContext';
 import { Ionicons } from '@expo/vector-icons';
+import { Gesture, GestureDetector } from "react-native-gesture-handler";
 
 /**
  * ThemeToggle Component
@@ -10,24 +11,30 @@ import { Ionicons } from '@expo/vector-icons';
  * Uses Ionicons for visual indication of current theme
  */
 const ThemeToggle = () => {
-  const { theme, toggleTheme, colors } = useTheme();
+  const { theme, toggleTheme, colors, active } = useTheme();
+
+  // Create a pan gesture that captures the tap location
+  const pan = Gesture.Pan()
+    .runOnJS(true)
+    .onBegin((e) => {
+      if (!active) {
+        toggleTheme(e.absoluteX, e.absoluteY);
+      }
+    });
 
   return (
-    <TouchableOpacity 
-      style={[styles.container, { backgroundColor: colors.primary }]} 
-      onPress={toggleTheme}
-      accessibilityLabel="Toggle theme"
-      accessibilityRole="button"
-    >
-      <Ionicons 
-        name={theme === 'light' ? 'moon' : 'sunny'} 
-        size={16} 
-        color={colors.black} 
-      />
-      <Text style={[styles.text, { color: colors.black }]}>
-        {theme === 'light' ? 'Dark' : 'Light'}
-      </Text>
-    </TouchableOpacity>
+    <GestureDetector gesture={pan}>
+      <View collapsable={false} style={[styles.container, { backgroundColor: colors.primary }]}>
+        <Ionicons 
+          name={theme === 'light' ? 'moon' : 'sunny'} 
+          size={16} 
+          color="black" 
+        />
+        <Text style={[styles.text, { color: 'black' }]}>
+          {theme === 'light' ? 'Dark' : 'Light'}
+        </Text>
+      </View>
+    </GestureDetector>
   );
 };
 
