@@ -2,18 +2,10 @@ import React from 'react';
 import { Stack } from 'expo-router';
 import { ThemeProvider } from '../context/ThemeContext';
 import { StatusBar } from 'expo-status-bar';
-import { useColorScheme } from 'react-native';
 import { useTheme } from '../context/ThemeContext';
-import ThemeToggle from '@/components/ThemeToggle';
+import ThemeToggle from '../components/ThemeToggle';
 
-/**
- * Root Layout Component
- * 
- * Sets up the navigation structure and wraps the app with ThemeProvider
- * Configures StatusBar and Stack Navigator styles
- */
 export default function RootLayout() {
-  // We need a wrapper to access the theme context
   return (
     <ThemeProvider>
       <RootLayoutNav />
@@ -21,20 +13,12 @@ export default function RootLayout() {
   );
 }
 
-/**
- * Root Layout Navigator
- * 
- * This component needs to be wrapped by ThemeProvider to access the theme
- */
 function RootLayoutNav() {
   const { theme, colors } = useTheme();
   
   return (
     <>
-      {/* Status bar adapts to the current theme */}
-      {/* <StatusBar style={theme === 'dark' ? 'light' : 'dark'} /> */}
-      
-      {/* Stack Navigator for screen navigation */}
+      <StatusBar style={theme === 'dark' ? 'light' : 'dark'} />
       <Stack 
         screenOptions={{
           headerRight: () => <ThemeToggle />,
@@ -46,9 +30,7 @@ function RootLayoutNav() {
           headerStyle: {
             backgroundColor: theme === 'dark' ? '#000' : '#fff',
           },
-          headerTitle: 'SDK Demo',
-          
-          // Background color for the screens adapts to theme
+          headerTitle: 'SDK Integration',
           contentStyle: {
             backgroundColor: colors.background,
           },
@@ -61,24 +43,12 @@ function RootLayoutNav() {
           }} 
         />
         <Stack.Screen 
-          name="form" 
+          name="sdk-form" 
           options={{ 
-            title: "User Form",
-          }} 
-        />
-        <Stack.Screen 
-          name="results" 
-          options={{ 
-            title: "Submission Results",
-          }} 
-        />
-        <Stack.Screen 
-          name="sdk-integration" 
-          options={{ 
-            title: "SDK Integration Example",
+            title: "SDK Form",
           }} 
         />
       </Stack>
     </>
   );
-}
+} 
