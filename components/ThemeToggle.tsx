@@ -30,9 +30,9 @@ const ThemeToggle = () => {
           size={16} 
           color="black" 
         />
-        <Text style={[styles.text, { color: 'black' }]}>
+        {/* <Text style={[styles.text, { color: 'black' }]}>
           {theme === 'light' ? 'Dark' : 'Light'}
-        </Text>
+        </Text> */}
       </View>
     </GestureDetector>
   );
