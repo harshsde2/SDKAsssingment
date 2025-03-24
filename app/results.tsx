@@ -28,7 +28,7 @@ export default function ResultsScreen() {
       
       <TouchableOpacity
         style={[styles.button, { backgroundColor: colors.primary }]}
-        onPress={() => router.navigate('/')}
+        onPress={() => router.replace('/')}
       >
         <Text style={styles.buttonText}>Back to Home</Text>
       </TouchableOpacity>
