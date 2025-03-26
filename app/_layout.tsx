@@ -71,6 +71,12 @@ function RootLayoutNav() {
           }} 
         />
         <Stack.Screen 
+          name="animation" 
+          options={{ 
+            title: "Animation",
+          }} 
+        />
+        <Stack.Screen 
           name="results" 
           options={{ 
             title: "Submission Results",

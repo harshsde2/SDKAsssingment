@@ -107,6 +107,9 @@ export default function HomeScreen() {
               <TouchableOpacity onPress={() => router.push('/sdk-integration')} style={[styles.button, { backgroundColor: colors.primary }]}>
                 <Text style={styles.buttonText}>Try SDK</Text>
               </TouchableOpacity>
+              <TouchableOpacity onPress={() => router.push('/animation')} style={[styles.button, { backgroundColor: colors.primary }]}>
+                <Text style={styles.buttonText}>Animation</Text>
+              </TouchableOpacity>
             </View>
           </View>
 

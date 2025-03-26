@@ -16,7 +16,6 @@ interface AssetsListProps {
 
 const AssetsList = ({ assets }: AssetsListProps) => {
   const { colors, theme } = useTheme();
-  console.log(assets[0])
   return (
     <View style={[styles.assetsList, {backgroundColor: theme === 'dark' ? '#222' : '#E0E0E0'}]}>
       <Text style={[styles.assetsListTitle, {color: colors.text}]}>Assets Allocation</Text>

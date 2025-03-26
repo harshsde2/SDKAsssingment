@@ -31,7 +31,7 @@ const PieChartPlaceholder = ({ data }: PieChartPlaceholderProps) => {
         <PieChart
           widthAndHeight={chartSize}
           series={series}
-          cover={0.55} // Center hole size as a percentage (0-1)
+          cover={0.009} // Center hole size as a percentage (0-1)
           style={{ backgroundColor: 'transparent' }}
         />
       </View>
@@ -43,8 +43,8 @@ const PieChartPlaceholder = ({ data }: PieChartPlaceholderProps) => {
             key={index} 
             style={[
               styles.chartLabel, 
-              index === 0 ? {left: '10%', top: '30%'} :
-              index === 1 ? {right: '5%', top: '30%'} :
+              index === 0 ? {right: '5%', top: '30%'} :
+              index === 1 ? {left: '5%', top: '30%'} :
               {top: '-10%', left: '30%', alignSelf: 'center'}
             ]}
           >
